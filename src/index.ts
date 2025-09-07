@@ -13,10 +13,10 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/send-email', async (req: Request, res: Response) => {
-  const { fullname, email, subject, message } = req.body;
+  const { name, email, subject, message } = req.body;
 
-  if (!fullname || !email || !subject || !message) {
-    console.log({ fullname, email, subject, message });
+  if (!name || !email || !subject || !message) {
+    console.log({ name, email, subject, message });
     return res.status(400).json({ error: 'Missing fields' });
   }
 
@@ -30,14 +30,14 @@ app.post('/send-email', async (req: Request, res: Response) => {
     });
 
     await transporter.sendMail({
-      from: `"${fullname}" <${email}>`,
+      from: `"${name}" <${email}>`,
       to: process.env.GMAIL_USER,
       subject: subject,
       text: message,
       html: `
         <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
           <h2 style="color: #007BFF;">${subject}</h2>
-          <p><strong>From:</strong> ${fullname} &lt;${email}&gt;</p>
+          <p><strong>From:</strong> ${name} &lt;${email}&gt;</p>
           <hr>
           <p>${message.replace(/\n/g, '<br>')}</p>
         </div>
