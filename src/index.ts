@@ -31,6 +31,7 @@ app.post('/send-email', async (req: Request, res: Response) => {
 
     await transporter.sendMail({
       from: `"${name}" <${email}>`,
+      replyTo: email, // user's email for replies
       to: process.env.GMAIL_USER,
       subject: subject,
       text: message,
