@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 // Load environment variables
 dotenv.config();
@@ -8,6 +9,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.post('/send-email', async (req: Request, res: Response) => {
