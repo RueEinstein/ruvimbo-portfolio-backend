@@ -1,0 +1,22 @@
+// {
+//   "compilerOptions": {
+//     "target": "ESNext",
+//     "module": "NodeNext",
+//     "skipLibCheck": true,
+//   },
+//   "exclude": ["node_modules"]
+// }
+
+{
+  "compilerOptions": {
+    "target": "ESNext",           // Use ESNext for the latest features
+    "module": "ESNext",           // Use ES Modules
+    "moduleResolution": "Node",   // Ensure Node.js module resolution
+    "esModuleInterop": true,      // Ensure compatibility with CommonJS modules
+    "skipLibCheck": true,         // Skip checking library files
+    "strict": true,               // Enable strict mode for better type checking
+    "outDir": "./dist"            // Specify the output directory for compiled files
+  },
+  "include": ["src/**/*.ts"],      // Include all TypeScript files in src/
+  "exclude": ["node_modules"]      // Exclude node_modules
+}
