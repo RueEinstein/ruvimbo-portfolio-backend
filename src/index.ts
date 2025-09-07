@@ -31,6 +31,14 @@ app.post('/send-email', async (req: Request, res: Response) => {
       to: process.env.GMAIL_USER,
       subject: subject,
       text: message,
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
+          <h2 style="color: #007BFF;">${subject}</h2>
+          <p><strong>From:</strong> ${fullname} &lt;${email}&gt;</p>
+          <hr>
+          <p>${message.replace(/\n/g, '<br>')}</p>
+        </div>
+      `,
     });
 
     res.status(200).json({ success: true, message: 'Email sent' });
