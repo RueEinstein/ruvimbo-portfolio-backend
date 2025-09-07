@@ -16,6 +16,7 @@ app.post('/send-email', async (req: Request, res: Response) => {
   const { fullname, email, subject, message } = req.body;
 
   if (!fullname || !email || !subject || !message) {
+    console.log({ fullname, email, subject, message });
     return res.status(400).json({ error: 'Missing fields' });
   }
 
